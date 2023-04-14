@@ -85,7 +85,7 @@ const UpdataData = ({item}) => {
        <div>
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>Edit</Button>
+          <Button variant="outlined" onClick={toggleDrawer(anchor, true)}>Edit</Button>
           <Drawer
             anchor={anchor}
             open={state[anchor]}

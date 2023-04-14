@@ -52,6 +52,7 @@ const GetData = () => {
         dispatch(dataGet())
       }, 1000);
     },[data.length])
+    
   return (
     <div>
       {

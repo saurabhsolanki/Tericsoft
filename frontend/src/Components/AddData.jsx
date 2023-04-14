@@ -28,15 +28,7 @@ const Wrapper = styled(Box)`
         margin-top:20px;
     }
 `
-const LoginBtn = styled(Button)`
-    text-transform : none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-`
-const SignupBtn = styled(Button)`
-    text-transform : none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-`
-const signupInitialValues = {
+const InitialValues = {
     name:"",
     email:"",
     phone:"",
@@ -46,8 +38,7 @@ const signupInitialValues = {
 
 
 const AddData = () => {
-    const [data, setdata] = useState(signupInitialValues)
-    const [error,setError] = useState('')
+    const [data, setdata] = useState(InitialValues)
     const [value, setValue] = React.useState(null);
    
     const dispatch=useDispatch()
@@ -57,14 +48,6 @@ const AddData = () => {
         setdata({...data, [e.target.name]: e.target.value})
     }
 
-
-    const handleDate=(str)=>{
-      var date = new Date(str),
-      mnth = ("0" + (date.getMonth() + 1)).slice(-2),
-      day = ("0" + date.getDate()).slice(-2);
-    let newdate = [date.getFullYear(), mnth, day].join("-");
-    console.log(newdate,'newdate')
-    }
 
     const handleSubmit=(e)=>{
       e.preventDefault()
@@ -81,8 +64,6 @@ const AddData = () => {
       }
       console.log(obj,value)
       dispatch(dataPost(obj))
-      setValue(null)
-      setdata(data.name="")
     }
 
     const imgUrl = "https://tericsoft.com/wp-content/uploads/2021/08/Web-Logo-371x90px.png"
@@ -117,8 +98,7 @@ const AddData = () => {
                 <FormGroup>
                   <FormControlLabel control={<Checkbox name='hobbies' onChange={(e)=> onInputChange(e)}/>} label="Hobbies" />
                 </FormGroup>
-                {error && <Typography>{error}</Typography>}
-                <SignupBtn onClick={handleSubmit}>ADD DATA</SignupBtn>
+                <Button variant="contained" onClick={handleSubmit}>ADD DATA</Button>
             </Wrapper>
         }
     </Comp>
