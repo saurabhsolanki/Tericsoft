@@ -1,0 +1,41 @@
+{
+  "data": [
+    {
+      "name": "saurabh",
+      "email": "s@gmail.com",
+      "phone": "1234567",
+      "gender": "male",
+      "dob": "13-3-2023",
+      "hobbies": "on",
+      "id": 1
+    },
+    {
+      "name": "Mayank",
+      "email": "m@gmail.com",
+      "phone": "5485493",
+      "gender": "female",
+      "dob": "3-3-2023",
+      "hobbies": "on",
+      "id": 2
+    },
+    {
+      "name": "sahil",
+      "email": "solanki25@gmail.com",
+      "phone": "123",
+      "gender": "male",
+      "dob": "5-4-2023",
+      "hobbies": "on",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
