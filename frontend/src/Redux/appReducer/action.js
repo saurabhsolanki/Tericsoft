@@ -8,8 +8,14 @@ export const dataPost = (data) => (dispatch) => {
   });
 };
 export const dataGet = () => async (dispatch) => {
- let res= await axios.get("https://mockjson-0nv3.onrender.com/saurabh")
+  dispatch({type:types.getDataLoading})
+
+  try {
+    let res= await axios.get("https://mockjson-0nv3.onrender.com/saurabh")
     dispatch({ type: types.getDatauccess, payload: res.data });
+  } catch (error) {
+    dispatch({type:types.getDataError})
+  }
 
 };
 

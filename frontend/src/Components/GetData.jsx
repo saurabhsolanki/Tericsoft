@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { dataDelete, dataGet } from '../Redux/appReducer/action'
 import { styled } from '@mui/material/styles';
@@ -9,7 +9,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { Button } from '@mui/material';
+import { Box, Button, LinearProgress } from '@mui/material';
 import UpdataData from './UpdataData';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -33,8 +33,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 
+// getData is a function which get the arrray of data and Mapping that on DOM
 const GetData = () => {
     const {data}=useSelector((store)=>store.auth)
+    const loading=useSelector((store)=>store.auth)
+    const [spin, setspin] = useState(true)
     const dispatch=useDispatch()
 
     const handleDelete=(id)=>{
@@ -44,10 +47,22 @@ const GetData = () => {
     }
 
     useEffect(()=>{
+      setTimeout(() => {
+        setspin(false)
         dispatch(dataGet())
-    },[])
+      }, 1000);
+    },[data.length])
   return (
     <div>
+      {
+        spin?<>
+                  <Box sx={{ width: '100%' }}>
+                    <LinearProgress />
+                  </Box>
+        </>:
+        <></>
+      }
+          <br />
      <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
